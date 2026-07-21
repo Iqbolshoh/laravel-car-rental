@@ -21,12 +21,12 @@
             <span class="text-zinc-900 font-bold uppercase tracking-wider">Filter By:</span>
         </div>
 
-        <form class="flex flex-col sm:flex-row w-full md:w-auto gap-4 flex-grow justify-end">
-            <select class="bg-zinc-100 text-zinc-800 border-none px-6 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none uppercase text-sm tracking-wider font-semibold">
+        <form action="{{ route('cars.index') }}" method="GET" class="flex flex-col sm:flex-row w-full md:w-auto gap-4 flex-grow justify-end">
+            <select name="category" onchange="this.form.submit()" class="bg-zinc-100 text-zinc-800 border-none px-6 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none uppercase text-sm tracking-wider font-semibold">
                 <option value="">All Categories</option>
-                <option value="exotic">Exotic</option>
-                <option value="suv">Luxury SUV</option>
-                <option value="sedan">Sport Sedan</option>
+                @foreach ($categories as $category)
+                <option value="{{ $category }}" @selected($selectedCategory === $category)>{{ $category }}</option>
+                @endforeach
             </select>
 
             <button type="submit" class="bg-zinc-900 text-white px-8 py-3 rounded hover:bg-amber-500 hover:text-zinc-950 transition-colors duration-300 font-bold uppercase tracking-widest">
@@ -38,11 +38,10 @@
     <!-- Vehicle Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        @foreach ($cars as $car)
-        <!-- Loop Item Placeholder 1 -->
+        @forelse ($cars as $car)
         <div class="bg-white rounded-lg shadow border border-zinc-100 overflow-hidden flex flex-col group">
             <div class="h-56 overflow-hidden relative">
-                <img src="{{ $car->image }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="McLaren">
+                <img src="{{ $car->image }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="{{ $car->name }}">
                 <div class="absolute bottom-0 left-0 bg-amber-500 text-zinc-950 px-4 py-2 font-bold uppercase tracking-wider text-sm">
                     {{ $car->status }}
                 </div>
@@ -60,7 +59,7 @@
                 <div class="grid grid-cols-2 gap-y-4 mb-8 mt-4">
                     <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-tachometer-alt w-6 text-amber-500"></i> {{ $car->horsepower }}</div>
                     <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-cogs w-6 text-amber-500"></i> {{ $car->transmission }}</div>
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-chair w-6 text-amber-500"></i> 2 {{ $car->seats }}</div>
+                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-chair w-6 text-amber-500"></i> {{ $car->seats }} Seats</div>
                     <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-gas-pump w-6 text-amber-500"></i> {{ $car->fuel_type }}</div>
                 </div>
 

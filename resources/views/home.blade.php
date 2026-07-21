@@ -24,7 +24,7 @@
 
         <!-- Action Buttons -->
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a href="/cars" class="bg-amber-500 text-zinc-950 px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-amber-400 transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+            <a href="{{ route('cars.index') }}" class="bg-amber-500 text-zinc-950 px-10 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-amber-400 transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
                 Explore Fleet
             </a>
         </div>

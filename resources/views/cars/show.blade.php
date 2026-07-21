@@ -19,7 +19,7 @@
         <div class="lg:col-span-2 space-y-10">
             <!-- Large Image -->
             <div class="rounded-xl overflow-hidden shadow-2xl">
-                <img src="{{ $car->image }}" alt="McLaren 720S" class="w-full h-auto object-cover">
+                <img src="{{ $car->image }}" alt="{{ $car->name }}" class="w-full h-auto object-cover">
             </div>
 
             <!-- Vehicle Details -->
@@ -39,8 +39,8 @@
                         <span class="text-zinc-800 font-semibold text-sm uppercase">{{ $car->horsepower }}</span>
                     </div>
                     <div class="flex flex-col items-center p-4 bg-zinc-50 rounded-lg text-center">
-                        <i class="fas fa-stopwatch text-3xl text-amber-500 mb-3"></i>
-                        <span class="text-zinc-800 font-semibold text-sm uppercase">{{ $car->seats }}s</span>
+                        <i class="fas fa-chair text-3xl text-amber-500 mb-3"></i>
+                        <span class="text-zinc-800 font-semibold text-sm uppercase">{{ $car->seats }} Seats</span>
                     </div>
                     <div class="flex flex-col items-center p-4 bg-zinc-50 rounded-lg text-center">
                         <i class="fas fa-fan text-3xl text-amber-500 mb-3"></i>

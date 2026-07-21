@@ -34,7 +34,7 @@
 
                 <!-- Brand Logo -->
                 <div class="flex-shrink-0">
-                    <a href="/" class="flex items-center gap-3 group">
+                    <a href="{{ route('home') }}" class="flex items-center gap-3 group">
                         <div class="w-10 h-10 bg-amber-500 rounded flex items-center justify-center text-zinc-900 transform group-hover:rotate-12 transition-transform duration-300">
                             <i class="fas fa-car-side text-xl"></i>
                         </div>
@@ -45,9 +45,9 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="/" class="px-3 py-2 text-sm font-medium hover:text-amber-500 transition-colors duration-300 uppercase tracking-widest border-b-2 border-transparent hover:border-amber-500">Home</a>
-                        <a href="/cars" class="px-3 py-2 text-sm font-medium hover:text-amber-500 transition-colors duration-300 uppercase tracking-widest border-b-2 border-transparent hover:border-amber-500">Cars</a>
-                        <a href="/orders" class="px-3 py-2 text-sm font-medium hover:text-amber-500 transition-colors duration-300 uppercase tracking-widest border-b-2 border-transparent hover:border-amber-500">Orders</a>
+                        <a href="{{ route('home') }}" class="px-3 py-2 text-sm font-medium hover:text-amber-500 transition-colors duration-300 uppercase tracking-widest border-b-2 border-transparent hover:border-amber-500">Home</a>
+                        <a href="{{ route('cars.index') }}" class="px-3 py-2 text-sm font-medium hover:text-amber-500 transition-colors duration-300 uppercase tracking-widest border-b-2 border-transparent hover:border-amber-500">Cars</a>
+                        <a href="{{ route('orders.index') }}" class="px-3 py-2 text-sm font-medium hover:text-amber-500 transition-colors duration-300 uppercase tracking-widest border-b-2 border-transparent hover:border-amber-500">Orders</a>
                     </div>
                 </div>
 
@@ -90,15 +90,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
             <!-- Footer Logo -->
-            <a href="/" class="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
+            <a href="{{ route('home') }}" class="text-2xl font-bold text-white mb-6 uppercase tracking-widest">
                 Elite<span class="text-amber-500">Drive</span>
             </a>
 
             <!-- Footer Navigation -->
             <div class="flex space-x-8 mb-8">
-                <a href="/" class="hover:text-amber-500 transition duration-300 uppercase text-xs tracking-widest">Home</a>
-                <a href="/cars" class="hover:text-amber-500 transition duration-300 uppercase text-xs tracking-widest">Cars</a>
-                <a href="/orders" class="hover:text-amber-500 transition duration-300 uppercase text-xs tracking-widest">Orders</a>
+                <a href="{{ route('home') }}" class="hover:text-amber-500 transition duration-300 uppercase text-xs tracking-widest">Home</a>
+                <a href="{{ route('cars.index') }}" class="hover:text-amber-500 transition duration-300 uppercase text-xs tracking-widest">Cars</a>
+                <a href="{{ route('orders.index') }}" class="hover:text-amber-500 transition duration-300 uppercase text-xs tracking-widest">Orders</a>
             </div>
 
             <!-- Copyright Notice -->

@@ -1,0 +1,86 @@
+@extends('layouts.app')
+
+@section('title', 'McLaren 720S - EliteDrive')
+
+@section('content')
+
+<!-- Vehicle Title Section -->
+<div class="bg-zinc-950 text-white pt-12 pb-24">
+    <div class="max-w-7xl mx-auto px-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold uppercase tracking-wider mb-2">McLaren 720S</h1>
+        <p class="text-amber-500 text-lg uppercase tracking-widest font-semibold">Exotic Supercar</p>
+    </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 -mt-16 mb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+        <!-- Main Content Area -->
+        <div class="lg:col-span-2 space-y-10">
+            <!-- Large Image -->
+            <div class="rounded-xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=1200" alt="McLaren 720S" class="w-full h-auto object-cover">
+            </div>
+
+            <!-- Vehicle Details -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-zinc-100">
+                <h2 class="text-2xl font-bold text-zinc-900 uppercase tracking-widest mb-6 flex items-center">
+                    <span class="w-8 h-1 bg-amber-500 mr-4"></span> Overview
+                </h2>
+                <p class="text-zinc-600 leading-relaxed mb-8 text-lg font-light">
+                    The McLaren 720S embodies the relentless quest to push the limits of possibility. Lighter, stronger, faster. It’s all of these and more. Experience unparalleled performance combined with breathtaking aesthetics in this engineering masterpiece.
+                </p>
+
+                <!-- Feature Grid -->
+                <h3 class="text-xl font-bold text-zinc-900 uppercase tracking-wider mb-6">Features</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                    <div class="flex flex-col items-center p-4 bg-zinc-50 rounded-lg text-center">
+                        <i class="fas fa-tachometer-alt text-3xl text-amber-500 mb-3"></i>
+                        <span class="text-zinc-800 font-semibold text-sm uppercase">212 mph Max</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-zinc-50 rounded-lg text-center">
+                        <i class="fas fa-stopwatch text-3xl text-amber-500 mb-3"></i>
+                        <span class="text-zinc-800 font-semibold text-sm uppercase">0-60 in 2.8s</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-zinc-50 rounded-lg text-center">
+                        <i class="fas fa-fan text-3xl text-amber-500 mb-3"></i>
+                        <span class="text-zinc-800 font-semibold text-sm uppercase">Carbon Fiber</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reservation Sidebar -->
+        <div class="lg:col-span-1">
+            <div class="bg-zinc-900 rounded-xl shadow-2xl p-8 sticky top-28 border-t-4 border-amber-500 text-white">
+                <div class="text-center mb-8">
+                    <div class="text-zinc-400 text-sm uppercase tracking-widest mb-2">Daily Rate</div>
+                    <div class="text-5xl font-extrabold text-amber-500">$850</div>
+                </div>
+
+                <!-- Booking Form -->
+                <form action="/orders" method="POST" class="space-y-6">
+
+                    <div class="space-y-2">
+                        <label class="block text-zinc-300 text-xs font-bold uppercase tracking-widest">Start Date</label>
+                        <input type="date" class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-zinc-300 text-xs font-bold uppercase tracking-widest">End Date</label>
+                        <input type="date" class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div class="pt-6">
+                        <button type="submit" class="w-full bg-amber-500 text-zinc-950 font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-400 transition-colors duration-300 transform hover:scale-105">
+                            Confirm Order
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@endsection

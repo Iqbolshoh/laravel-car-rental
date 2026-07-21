@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'McLaren 720S - EliteDrive')
+@section('title', $car->name.' - EliteDrive')
 
 @section('content')
 
@@ -55,24 +55,47 @@
             <div class="bg-zinc-900 rounded-xl shadow-2xl p-8 sticky top-28 border-t-4 border-amber-500 text-white">
                 <div class="text-center mb-8">
                     <div class="text-zinc-400 text-sm uppercase tracking-widest mb-2">Daily Rate</div>
-                    <div class="text-5xl font-extrabold text-amber-500">{{ $car->price_per_day }}</div>
+                    <div class="text-5xl font-extrabold text-amber-500">${{ number_format($car->price_per_day, 0) }}</div>
                 </div>
 
+                @if ($car->status !== 'available')
+                <div class="bg-red-500/10 border border-red-500/40 text-red-400 text-sm font-semibold uppercase tracking-widest text-center px-4 py-3 rounded mb-6">
+                    This vehicle is currently {{ $car->status }}
+                </div>
+                @endif
+
                 <!-- Booking Form -->
-                <form action="/orders" method="POST" class="space-y-6">
+                <form action="{{ route('orders.store') }}" method="POST" class="space-y-6">
+                    @csrf
+                    <input type="hidden" name="car_id" value="{{ $car->id }}">
+
+                    <div class="space-y-2">
+                        <label class="block text-zinc-300 text-xs font-bold uppercase tracking-widest">Full Name</label>
+                        <input type="text" name="full_name" value="{{ old('full_name') }}" required class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-zinc-300 text-xs font-bold uppercase tracking-widest">Email</label>
+                        <input type="email" name="email" value="{{ old('email') }}" required class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-zinc-300 text-xs font-bold uppercase tracking-widest">Phone</label>
+                        <input type="text" name="phone" value="{{ old('phone') }}" required class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
 
                     <div class="space-y-2">
                         <label class="block text-zinc-300 text-xs font-bold uppercase tracking-widest">Start Date</label>
-                        <input type="date" class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
+                        <input type="date" name="start_date" value="{{ old('start_date') }}" required class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
 
                     <div class="space-y-2">
                         <label class="block text-zinc-300 text-xs font-bold uppercase tracking-widest">End Date</label>
-                        <input type="date" class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
+                        <input type="date" name="end_date" value="{{ old('end_date') }}" required class="w-full bg-zinc-800 border-none text-white px-4 py-3 rounded focus:ring-2 focus:ring-amber-500 outline-none">
                     </div>
 
                     <div class="pt-6">
-                        <button type="submit" class="w-full bg-amber-500 text-zinc-950 font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-400 transition-colors duration-300 transform hover:scale-105">
+                        <button type="submit" @if($car->status !== 'available') disabled @endif class="w-full bg-amber-500 text-zinc-950 font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-400 transition-colors duration-300 transform hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100">
                             Confirm Order
                         </button>
                     </div>

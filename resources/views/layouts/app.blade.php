@@ -63,6 +63,25 @@
 
     <!-- Main Content Area -->
     <main class="flex-grow">
+        @if (session('success'))
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+            <div class="bg-emerald-50 border border-emerald-300 text-emerald-800 px-6 py-4 rounded-lg font-medium">
+                <i class="fas fa-circle-check text-emerald-500 mr-2"></i>{{ session('success') }}
+            </div>
+        </div>
+        @endif
+
+        @if ($errors->any())
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+            <div class="bg-red-50 border border-red-300 text-red-800 px-6 py-4 rounded-lg font-medium">
+                <i class="fas fa-triangle-exclamation text-red-500 mr-2"></i>
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        </div>
+        @endif
+
         @yield('content')
     </main>
 

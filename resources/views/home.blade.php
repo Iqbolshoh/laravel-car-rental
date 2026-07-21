@@ -44,56 +44,25 @@
         <!-- Car Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-            <!-- Vehicle Card 1 -->
+            @forelse ($featuredCars as $car)
             <div class="group bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500">
                 <div class="relative overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800" alt="Supercar" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <img src="{{ $car->image }}" alt="{{ $car->name }}" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute top-4 right-4 bg-zinc-900 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider">
-                        $850 / day
+                        ${{ number_format($car->price_per_day, 0) }} / day
                     </div>
                 </div>
                 <div class="pt-6 pb-2 px-2 text-center">
-                    <h3 class="text-2xl font-bold text-zinc-900 mb-2 uppercase tracking-wide">McLaren 720S</h3>
-                    <p class="text-zinc-500 text-sm mb-6 uppercase tracking-widest">Exotic</p>
-                    <a href="/cars/1" class="inline-block w-full border-2 border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white font-bold uppercase tracking-widest py-3 transition-colors duration-300">
+                    <h3 class="text-2xl font-bold text-zinc-900 mb-2 uppercase tracking-wide">{{ $car->name }}</h3>
+                    <p class="text-zinc-500 text-sm mb-6 uppercase tracking-widest">{{ $car->category }}</p>
+                    <a href="{{ route('cars.show', $car->id) }}" class="inline-block w-full border-2 border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white font-bold uppercase tracking-widest py-3 transition-colors duration-300">
                         View Details
                     </a>
                 </div>
             </div>
-
-            <!-- Vehicle Card 2 -->
-            <div class="group bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                <div class="relative overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=800" alt="Luxury SUV" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 right-4 bg-zinc-900 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider">
-                        $500 / day
-                    </div>
-                </div>
-                <div class="pt-6 pb-2 px-2 text-center">
-                    <h3 class="text-2xl font-bold text-zinc-900 mb-2 uppercase tracking-wide">G-Wagon AMG</h3>
-                    <p class="text-zinc-500 text-sm mb-6 uppercase tracking-widest">Luxury SUV</p>
-                    <a href="/cars/2" class="inline-block w-full border-2 border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white font-bold uppercase tracking-widest py-3 transition-colors duration-300">
-                        View Details
-                    </a>
-                </div>
-            </div>
-
-            <!-- Vehicle Card 3 -->
-            <div class="group bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                <div class="relative overflow-hidden rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=800" alt="Luxury Sedan" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 right-4 bg-zinc-900 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider">
-                        $400 / day
-                    </div>
-                </div>
-                <div class="pt-6 pb-2 px-2 text-center">
-                    <h3 class="text-2xl font-bold text-zinc-900 mb-2 uppercase tracking-wide">Audi RS7</h3>
-                    <p class="text-zinc-500 text-sm mb-6 uppercase tracking-widest">Sport Sedan</p>
-                    <a href="/cars/3" class="inline-block w-full border-2 border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white font-bold uppercase tracking-widest py-3 transition-colors duration-300">
-                        View Details
-                    </a>
-                </div>
-            </div>
+            @empty
+            <p class="col-span-full text-center text-zinc-500 uppercase tracking-widest">No vehicles available right now.</p>
+            @endforelse
 
         </div>
     </div>

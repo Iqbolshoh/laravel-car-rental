@@ -65,6 +65,10 @@ class OrderSeeder extends Seeder
                 'total_price' => $totalDays * $car->price_per_day,
                 'status' => $booking['status'],
             ]);
+
+            if (in_array($booking['status'], ['pending', 'confirmed'])) {
+                $car->update(['status' => 'reserved']);
+            }
         }
     }
 }

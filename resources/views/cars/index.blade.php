@@ -38,71 +38,40 @@
     <!-- Vehicle Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
+        @foreach ($cars as $car)
         <!-- Loop Item Placeholder 1 -->
         <div class="bg-white rounded-lg shadow border border-zinc-100 overflow-hidden flex flex-col group">
             <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="McLaren">
+                <img src="{{ $car->image }}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="McLaren">
                 <div class="absolute bottom-0 left-0 bg-amber-500 text-zinc-950 px-4 py-2 font-bold uppercase tracking-wider text-sm">
-                    Available
+                    {{ $car->status }}
                 </div>
             </div>
 
             <div class="p-6 flex-grow flex flex-col">
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <h3 class="text-2xl font-bold text-zinc-900 uppercase">McLaren 720S</h3>
-                        <p class="text-zinc-500 text-sm uppercase tracking-wider mt-1">Exotic</p>
+                        <h3 class="text-2xl font-bold text-zinc-900 uppercase">{{ $car->name }}</h3>
+                        <p class="text-zinc-500 text-sm uppercase tracking-wider mt-1">{{ $car->category }}</p>
                     </div>
-                    <span class="text-xl font-extrabold text-zinc-900">$850<span class="text-sm text-zinc-400 font-normal">/day</span></span>
+                    <span class="text-xl font-extrabold text-zinc-900">${{ $car->price_per_day }}<span class="text-sm text-zinc-400 font-normal">/day</span></span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-y-4 mb-8 mt-4">
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-tachometer-alt w-6 text-amber-500"></i> 710 HP</div>
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-cogs w-6 text-amber-500"></i> Automatic</div>
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-chair w-6 text-amber-500"></i> 2 Seats</div>
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-gas-pump w-6 text-amber-500"></i> Petrol</div>
+                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-tachometer-alt w-6 text-amber-500"></i> {{ $car->horsepower }}</div>
+                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-cogs w-6 text-amber-500"></i> {{ $car->transmission }}</div>
+                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-chair w-6 text-amber-500"></i> 2 {{ $car->seats }}</div>
+                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-gas-pump w-6 text-amber-500"></i> {{ $car->fuel_type }}</div>
                 </div>
 
                 <div class="mt-auto">
-                    <a href="/cars/1" class="block text-center w-full bg-zinc-900 text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-500 hover:text-zinc-950 transition-colors duration-300">
+                    <a href="{{ route('cars.show', $car->id) }}" class="block text-center w-full bg-zinc-900 text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-500 hover:text-zinc-950 transition-colors duration-300">
                         Reserve Now
                     </a>
                 </div>
             </div>
         </div>
-
-        <!-- Loop Item Placeholder 2 -->
-        <div class="bg-white rounded-lg shadow border border-zinc-100 overflow-hidden flex flex-col group">
-            <div class="h-56 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=800" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="G-Wagon">
-                <div class="absolute bottom-0 left-0 bg-amber-500 text-zinc-950 px-4 py-2 font-bold uppercase tracking-wider text-sm">
-                    Available
-                </div>
-            </div>
-
-            <div class="p-6 flex-grow flex flex-col">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h3 class="text-2xl font-bold text-zinc-900 uppercase">G-Wagon AMG</h3>
-                        <p class="text-zinc-500 text-sm uppercase tracking-wider mt-1">Luxury SUV</p>
-                    </div>
-                    <span class="text-xl font-extrabold text-zinc-900">$500<span class="text-sm text-zinc-400 font-normal">/day</span></span>
-                </div>
-
-                <div class="grid grid-cols-2 gap-y-4 mb-8 mt-4">
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-tachometer-alt w-6 text-amber-500"></i> 577 HP</div>
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-cogs w-6 text-amber-500"></i> Automatic</div>
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-chair w-6 text-amber-500"></i> 5 Seats</div>
-                    <div class="flex items-center text-zinc-600 text-sm"><i class="fas fa-gas-pump w-6 text-amber-500"></i> Petrol</div>
-                </div>
-
-                <div class="mt-auto">
-                    <a href="/cars/2" class="block text-center w-full bg-zinc-900 text-white font-bold uppercase tracking-widest py-4 rounded hover:bg-amber-500 hover:text-zinc-950 transition-colors duration-300">
-                        Reserve Now
-                    </a>
-                </div>
-            </div>
-        </div>
+        @endforeach
 
     </div>
 </div>
